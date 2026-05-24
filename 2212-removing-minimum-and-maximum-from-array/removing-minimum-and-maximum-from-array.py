@@ -1,0 +1,17 @@
+class Solution(object):
+    def minimumDeletions(self, nums):
+        n = len(nums)
+        
+        min_idx = nums.index(min(nums))
+        max_idx = nums.index(max(nums))
+        
+        # Ensure min_idx <= max_idx
+        left = min(min_idx, max_idx)
+        right = max(min_idx, max_idx)
+        
+        # 3 possible ways
+        option1 = right + 1              # remove both from front
+        option2 = n - left               # remove both from back
+        option3 = (left + 1) + (n - right)  # one from front, one from back
+        
+        return min(option1, option2, option3)
